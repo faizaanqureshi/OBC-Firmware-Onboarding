@@ -4,7 +4,8 @@
 #include <stdint.h>
 
 /* Event types to be sent to light service queue */
-typedef enum {
+typedef enum
+{
     MEASURE_LIGHT
 } light_event_t;
 
@@ -15,22 +16,23 @@ typedef enum {
 
 /* USER CODE BEGIN */
 // Define light service queue config here
-
+#define LIGHT_SERVICE_QUEUE_LENGTH 256
+#define LIGHT_SERVICE_QUEUE_SIZE sizeof(light_event_t);
 /* USER CODE END */
 
 /**
  * @brief Create the light service task and queue.
- * 
- * @return uint8_t 1 if successful, 0 otherwise 
+ *
+ * @return uint8_t 1 if successful, 0 otherwise
  */
 uint8_t initLightService(void);
 
 /**
  * @brief Send an event to the light service queue.
- * 
+ *
  * @param event The event to send to the queue.
  * @note This function is used by the controller task to send events to the light service queue.
- * @return uint8_t 1 if successful, 0 otherwise 
+ * @return uint8_t 1 if successful, 0 otherwise
  */
 uint8_t sendToLightServiceQueue(light_event_t *event);
 
